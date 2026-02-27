@@ -57,26 +57,3 @@ right={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
-
-[shader_globals]
-
-diffuse_curve={
-"type": "sampler2D",
-"value": "::dyx8a"
-}
-specular_smoothness={
-"type": "float",
-"value": 0.05
-}
-fresnel_smoothness={
-"type": "float",
-"value": 0.05
-}
-outline_width={
-"type": "float",
-"value": 4.0
-}
-outline_color={
-"type": "color",
-"value": Color(0, 0, 0, 1)
-}
