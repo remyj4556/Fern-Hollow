@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dtsa00qrrsoco"]
+
+[ext_resource type="PackedScene" uid="uid://bwf5iwhu2d2n5" path="res://stylized_pumpkins.blend" id="1_dyx8a"]
+[ext_resource type="Shader" uid="uid://byug7du3ti66i" path="res://stylized_pumpkins.gdshader" id="2_dyx8a"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bvgqv"]
+seed = 3
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y3yrl"]
+noise = SubResource("FastNoiseLite_bvgqv")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dyx8a"]
+frequency = 0.008
+offset = Vector3(282.61, 0, 0)
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bvgqv"]
+noise = SubResource("FastNoiseLite_dyx8a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyx8a"]
+render_priority = 0
+shader = ExtResource("2_dyx8a")
+shader_parameter/albedo = Color(0.8352941, 0.5686275, 0.3882353, 1)
+shader_parameter/shadow_color = Color(0.3, 0.2, 0.5, 1)
+shader_parameter/wash = 0.4010000190475
+shader_parameter/bands = 3.0
+shader_parameter/noise_pattern = SubResource("NoiseTexture2D_bvgqv")
+shader_parameter/light_noise = SubResource("NoiseTexture2D_y3yrl")
+shader_parameter/edge_noise_strength = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dyx8a"]
+radius = 0.18947428
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvgqv"]
+render_priority = 0
+shader = ExtResource("2_dyx8a")
+shader_parameter/albedo = Color(0.54901963, 0.5058824, 0.08627451, 1)
+shader_parameter/shadow_color = Color(0.2, 0.15, 0.4, 1)
+shader_parameter/wash = 0.3
+shader_parameter/bands = 3.0
+shader_parameter/edge_noise_strength = 0.1
+
+[node name="stylized_pumpkins" unique_id=1250631064 instance=ExtResource("1_dyx8a")]
+
+[node name="Pumpkin Orange" parent="." index="0" unique_id=1243600429]
+transform = Transform3D(-0.912621, 0, -0.40880683, 0, 1, 0, 0.40880683, 0, -0.912621, 0, 0.017564172, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_dyx8a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pumpkin Orange" index="0" unique_id=917486876]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pumpkin Orange/StaticBody3D" index="0" unique_id=1249204597]
+shape = SubResource("SphereShape3D_dyx8a")
+
+[node name="Area 1" parent="." index="1" unique_id=346138122]
+visible = false
+
+[node name="Area 3" parent="." index="2" unique_id=1921747736]
+visible = false
+
+[node name="Pumpkin Stem Orange" parent="." index="3" unique_id=1801644343]
+surface_material_override/0 = SubResource("ShaderMaterial_bvgqv")
+
+[node name="Pumpkin Green" parent="." index="5" unique_id=529590580]
+visible = false
+
+[node name="Pumpkin Stem Green" parent="." index="6" unique_id=1502625281]
+visible = false
+
+[node name="Pumpkin White" parent="." index="7" unique_id=979815725]
+visible = false
+
+[node name="Pumpkin Stem White" parent="." index="8" unique_id=862786272]
+visible = false
